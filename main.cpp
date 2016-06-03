@@ -121,6 +121,22 @@ void insertSort(int* array, int len, int& count){
 	}
 }
 
+void selectSort(int* array, int len, int& count){
+	int max_id;
+	for (int i = 0; i < len - 1; i++){
+		max_id = i;
+		for (int j = i + 1; j < len; j++){
+			count++;
+			if (array[max_id] < array[j]){
+				max_id = j;
+			}
+		}
+		if (max_id != i){
+			swap(array[i],array[max_id]);
+		}
+	}
+}
+
 
 void printArray(int* array, int len, int count){
 	cout << "Count of compares: " << count << endl;
@@ -131,7 +147,7 @@ void printArray(int* array, int len, int count){
 void main(){
 	int array[10] = {0,9,8,3,6,4,7,5,2,1};
 	int count = 0;
-	insertSort(array, 10, count);
+	selectSort(array, 10, count);
 	printArray(array, 10, count);
 	system("pause");
 }
